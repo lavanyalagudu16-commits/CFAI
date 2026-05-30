@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mind Arena - AI Board Game Playing Agent</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header>
+    <h1>🧠 Mind Arena</h1>
+    <p>AI Board Game Playing Agent</p>
+</header>
+
+<div class="menu">
+    <button onclick="showGame('home')">🏠 Home</button>
+    <button onclick="showGame('tictactoe')">🎮 Tic Tac Toe</button>
+    <button onclick="showGame('sudoku')">🔢 Sudoku</button>
+    <button onclick="showGame('memory')">🧩 Memory Match</button>
+</div>
+
+<!-- HOME -->
+<div id="home" class="section active">
+    <h2>Welcome to Mind Arena</h2>
+    <p>Select a game from above.</p>
+</div>
+
+<!-- TIC TAC TOE -->
+<div id="tictactoe" class="section">
+
+    <h2>Tic Tac Toe</h2>
+
+    <select id="mode">
+        <option value="friend">Play with Friend</option>
+        <option value="ai">Play with AI</option>
+    </select>
+
+    <h3 id="status">Player X Turn</h3>
+
+    <div class="board">
+        <div class="cell" onclick="play(0)"></div>
+        <div class="cell" onclick="play(1)"></div>
+        <div class="cell" onclick="play(2)"></div>
+        <div class="cell" onclick="play(3)"></div>
+        <div class="cell" onclick="play(4)"></div>
+        <div class="cell" onclick="play(5)"></div>
+        <div class="cell" onclick="play(6)"></div>
+        <div class="cell" onclick="play(7)"></div>
+        <div class="cell" onclick="play(8)"></div>
+    </div>
+
+    <button onclick="restartGame()">Restart</button>
+
+</div>
+<!-- SUDOKU -->
+<div id="sudoku" class="section">
+<h3 id="timer">Time: 0s</h3>
+
+<button onclick="checkSudoku()">Check</button>
+<button onclick="giveHint()">Hint</button>
+    <h2>🔢 Sudoku Solver</h2>
+
+    <select id="difficulty">
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+    </select>
+
+    <br><br>
+
+    <button onclick="loadSudoku()">Load Puzzle</button>
+    <button onclick="resetSudoku()">Reset</button>
+
+   <div id="sudokuBoard" class="sudoku-grid"></div>
+
+</div>
+<!-- MEMORY -->
+<div id="memory" class="section">
+
+    <h2>🧩 Memory Match Challenge</h2>
+
+    <p>Match all pairs with minimum moves.</p>
+
+    <h3 id="memoryStatus">Moves: 0</h3>
+
+    <div class="memory-grid">
+
+        <div class="memory-card" onclick="flipCard(this)"></div>
+        <div class="memory-card" onclick="flipCard(this)"></div>
+        <div class="memory-card" onclick="flipCard(this)"></div>
+        <div class="memory-card" onclick="flipCard(this)"></div>
+
+        <div class="memory-card" onclick="flipCard(this)"></div>
+        <div class="memory-card" onclick="flipCard(this)"></div>
+        <div class="memory-card" onclick="flipCard(this)"></div>
+        <div class="memory-card" onclick="flipCard(this)"></div>
+
+        <div class="memory-card" onclick="flipCard(this)"></div>
+        <div class="memory-card" onclick="flipCard(this)"></div>
+        <div class="memory-card" onclick="flipCard(this)"></div>
+        <div class="memory-card" onclick="flipCard(this)"></div>
+
+        <div class="memory-card" onclick="flipCard(this)"></div>
+        <div class="memory-card" onclick="flipCard(this)"></div>
+        <div class="memory-card" onclick="flipCard(this)"></div>
+        <div class="memory-card" onclick="flipCard(this)"></div>
+
+    </div>
+
+</div>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

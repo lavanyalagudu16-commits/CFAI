@@ -1,0 +1,127 @@
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#0f172a;
+    color:white;
+    text-align:center;
+}
+
+header{
+    background:#1e293b;
+    padding:20px;
+}
+
+header h1{
+    margin:0;
+}
+
+.menu{
+    margin:20px;
+}
+
+.menu button{
+    padding:10px 20px;
+    margin:5px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    background:#3b82f6;
+    color:white;
+}
+
+.menu button:hover{
+    background:#2563eb;
+}
+
+.section{
+    display:none;
+    padding:20px;
+}
+
+.active{
+    display:block;
+}
+
+.board{
+    width:315px;
+    margin:20px auto;
+    display:grid;
+    grid-template-columns:repeat(3,100px);
+    gap:5px;
+}
+
+.cell{
+    width:100px;
+    height:100px;
+    background:white;
+    color:black;
+    font-size:40px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+    border-radius:8px;
+}
+
+.cell:hover{
+    background:#e2e8f0;
+}
+
+select{
+    padding:10px;
+    margin:10px;
+}
+
+button{
+    padding:10px 20px;
+}
+
+#sudokuBoard{
+    background:#1e293b;
+    padding:20px;
+    border-radius:10px;
+    width:fit-content;
+    margin:auto;
+    font-size:20px;
+    line-height:1.6;
+    text-align:left;
+}
+.sudoku-grid{
+    display:grid;
+    grid-template-columns:repeat(9,40px);
+    gap:2px;
+    justify-content:center;
+    margin:auto;
+}
+
+.sudoku-cell{
+    width:40px;
+    height:40px;
+    text-align:center;
+    font-size:18px;
+    border:1px solid #555;
+    outline:none;
+    background:white;
+    color:black;
+}
+
+.memory-grid{
+    width:440px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(4,100px);
+    gap:10px;
+}
+
+.memory-card{
+    width:100px;
+    height:100px;
+    background:#3b82f6;
+    border-radius:12px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:35px;
+    cursor:pointer;
+    color:white;
+}
