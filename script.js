@@ -87,24 +87,65 @@ function play(index){
 
 function aiMove(){
 
+    for(let i=0;i<9;i++){
+        if(board[i] === ""){
+            board[i] = "O";
+
+            if(checkWinner("O")){
+                board[i] = "";
+                makeMove(i);
+                return;
+            }
+
+            board[i] = "";
+        }
+    }
+
+    for(let i=0;i<9;i++){
+        if(board[i] === ""){
+            board[i] = "X";
+
+            if(checkWinner("X")){
+                board[i] = "";
+                makeMove(i);
+                return;
+            }
+
+            board[i] = "";
+        }
+    }
+
+    if(board[4] === ""){
+        makeMove(4);
+        return;
+    }
+
+    let corners = [0,2,6,8];
+
+    for(let corner of corners){
+        if(board[corner] === ""){
+            makeMove(corner);
+            return;
+        }
+    }
+
     let empty = [];
 
     for(let i=0;i<9;i++){
-
         if(board[i] === "")
             empty.push(i);
     }
 
-    if(empty.length === 0)
-        return;
-
-    let move =
-    empty[Math.floor(Math.random()*empty.length)];
+    if(empty.length > 0){
+        let move = empty[Math.floor(Math.random()*empty.length)];
+        makeMove(move);
+    }
+}
+function makeMove(move){
 
     board[move] = "O";
 
-    document.querySelectorAll(".cell")[move]
-    .innerHTML = "O";
+    document.querySelectorAll(".cell")[move].innerHTML = "O";
 
     if(checkWinner("O")){
 
@@ -129,7 +170,6 @@ function aiMove(){
     document.getElementById("status").innerHTML =
     "Player X Turn";
 }
-
 
 function checkWinner(player){
 
@@ -296,6 +336,7 @@ function startTimer(){
         "Time: " + time + "s";
     },1000);
 }
+
 // =======================
 // MEMORY GAME
 // =======================
@@ -311,8 +352,7 @@ const emojis = [
 "🔥","🔥"
 ];
 
-let shuffled =
-emojis.sort(() => Math.random() - 0.5);
+let shuffled = [...emojis].sort(() => Math.random() - 0.5);
 
 let firstCard = null;
 let secondCard = null;
@@ -368,4 +408,32 @@ function flipCard(card){
 
         },1000);
     }
+}
+let matched =
+document.querySelectorAll(".memory-card");
+
+let completed = [...matched]
+.every(card => card.innerHTML !== "");
+
+if(completed){
+    setTimeout(() => {
+        alert("🎉 Congratulations! You matched all pairs!");
+    }, 300);
+}
+function resetMemoryGame(){
+
+   shuffled = [...emojis].sort(() => Math.random() - 0.5);
+
+    firstCard = null;
+    secondCard = null;
+    lockBoard = false;
+    moves = 0;
+
+    document.getElementById("memoryStatus").innerHTML =
+    "Moves: 0";
+
+    document.querySelectorAll(".memory-card")
+    .forEach(card => {
+        card.innerHTML = "";
+    });
 }
